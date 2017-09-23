@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= @survey.title %></h1>
+  <ul>
+    <% @survey.questions.each do |question| %>
+      <% if question.question_text %>
+        <li><%= question.question_text %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= link_to "Add Questions", new_survey_question_path(@survey, @question) %>
+</div>

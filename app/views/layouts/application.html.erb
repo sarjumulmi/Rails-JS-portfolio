@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title>RailsPortfolioSurveyApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="container">
-    <div id="user-nav">
+  <div id="">
+    <div id="">
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>
         <%= link_to "Logout", destroy_user_session_path, :method=> :delete %>
@@ -21,7 +21,7 @@
         <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do%>
           <span class="fa fa-facebook"></span> Sign in with Facebook
         <% end %>
-        
+
       <% end %>
     </div>
   </div>

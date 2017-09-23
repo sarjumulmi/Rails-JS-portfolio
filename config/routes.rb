@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :answers
-  resources :questions
-  resources :submissions
-  resources :surveys
   
+  resources :submissions
+  resources :surveys, :shallow=> true do
+    resources :questions do
+      resources :answers
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,13 @@
+<div class="container">
+
+  <%= semantic_form_for [@survey, @question] do |f| %>
+    <%= f.inputs do %>
+      <%= f.input :question_text, :label => "Question: " %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit %>
+      <%= f.action :cancel%>
+    <% end %>
+  <% end %>
+  
+</div>
