@@ -7,23 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="">
-    <div id="">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>
-        <%= link_to "Logout", destroy_user_session_path, :method=> :delete %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_registration_path %>
-        <%= link_to "Sign In", new_user_session_path %>
-        <%= link_to user_omniauth_authorize_path(:github), class: "btn btn-block btn-social btn-lg btn-github" do%>
-          <span class="fa fa-github"></span> Sign in with Github
+  <div id="" class="container">
+    <div class="nav navbar">
+      <%= link_to "Home", root_path %>
+      <div id="" class="container">
+        <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>
+          <%= link_to "Logout", destroy_user_session_path, :method=> :delete %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path %>
+          <%= link_to "Sign In", new_user_session_path %>
+          <div class="container" id="omni">
+            <%= link_to user_omniauth_authorize_path(:github), class: "btn btn-block btn-social btn-lg btn-github" do%>
+              <span class="fa fa-github"></span> Sign in with Github
+            <% end %>
+            <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do%>
+              <span class="fa fa-facebook"></span> Sign in with Facebook
+            <% end %>
+          </div>
         <% end %>
-        <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do%>
-          <span class="fa fa-facebook"></span> Sign in with Facebook
-        <% end %>
-
-      <% end %>
-    </div>
+      </div>
+    </div>  
   </div>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

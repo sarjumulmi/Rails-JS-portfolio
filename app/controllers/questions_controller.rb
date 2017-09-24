@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+before_action :authenticate_user!
 
   def new
     if params[:survey_id]
@@ -14,6 +15,8 @@ class QuestionsController < ApplicationController
       @question = @survey.questions.build(question_params)
       if @question.save
         redirect_to survey_path(@survey)
+      else
+        render "surveys/index"
       end
     end
   end

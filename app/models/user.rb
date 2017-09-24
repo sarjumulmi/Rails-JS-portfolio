@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :created_surveys, :class_name=> "Survey", :foreign_key=>"creator_id"
   has_many :submissions, :foreign_key=>"submitter_id"
-  has_many :submitted_surveys, :through=> :submissions, :source=> :survey
+  has_many :participated_surveys, :through=> :submissions, :source=> :survey
 
   validates_associated :created_surveys
   validates_associated :submitted_surveys

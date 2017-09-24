@@ -4,5 +4,7 @@
       <li><%= link_to survey.title, survey_path(survey) %></li>
     <% end %>
   </ul>
-  <%= link_to "Add Survey", new_survey_path(@survey) %>
+  <% if user_signed_in? %>
+    <%= link_to "Add Survey", new_survey_path(@survey) %>
+  <% end %>
 </div>

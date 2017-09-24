@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :set_survey, :only=> [:show, :update, :edit, :destroy]
+  before_action :authenticate_user!, :only => [:show, :new, :create]
 
   def index
     @surveys = Survey.all
@@ -8,11 +9,11 @@ class SurveysController < ApplicationController
 
   def show
     @question = @survey.questions.build
-
+    @answer_choice = @question.answer_choices.build
   end
 
   def new
-    @survey = Survey.new
+    @survey = current_user.created_surveys.build
   end
 
   def create

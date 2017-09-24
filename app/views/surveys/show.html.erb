@@ -3,9 +3,26 @@
   <ul>
     <% @survey.questions.each do |question| %>
       <% if question.question_text %>
-        <li><%= question.question_text %></li>
+        <li>
+          <%= question.question_text %>
+          <%= link_to "Add Answer Options", new_question_answer_choice_path(question, @answer_choice) %>
+          <% question.answer_choices.each do |answer_choice| %>
+            <ul>
+              <% if answer_choice.answer_text %>
+                <li><%= answer_choice.answer_text %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </li>
       <% end %>
     <% end %>
   </ul>
-  <%= link_to "Add Questions", new_survey_question_path(@survey, @question) %>
+  <%= semantic_form_for [@survey, @question] do |q|%>
+    <%= q.inputs do %>
+      <%= q.input :question_text %>
+    <% end %>
+    <%= q.actions do %>
+      <%= q.action :submit %>
+    <% end %>
+  <% end %>
 </div>
