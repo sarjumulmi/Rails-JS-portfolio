@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%= @survey.title %></h1>
+  <ul class="list-group">
+    <% @survey.questions.each do |question| %>
+      <fieldset class="form-group">
+        <li class="list-group-item">
+          <strong><%= question.question_text %></strong>
+          <div class="container">
+            <% question.answer_choices.each do |answer_choice| %>
+              <div class="">
+                <%= answer_choice.answer_text %> - <%= Answer.answer_count(answer_choice) %>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      </fieldset>
+
+    <% end %>
+  </ul>
+
+</div>

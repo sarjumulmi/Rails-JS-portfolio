@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><%= @survey.title %></h1>
+  <%= semantic_form_for @submission do |f| %>
+    <%= f.input :survey_id, :as => :hidden %>
+    <ul>
+      <% @survey.questions.each do |question| %>
+        <li>
+          <%= question.question_text %>
+          <%= hidden_field_tag 'question_ids[]', question.id%>
+          <%= f.input :answers, :label => "", :as => :check_boxes, :collection => question.answer_choices.pluck(:answer_text, :id) %>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.actions do %>
+      <%= f.action :submit %>
+    <% end %>
+  <% end %>
+</div>
