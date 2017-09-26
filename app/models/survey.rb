@@ -8,4 +8,5 @@ class Survey < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions
 
+
 end

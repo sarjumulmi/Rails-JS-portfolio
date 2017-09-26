@@ -7,17 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="" class="container">
-    <div class="nav navbar">
-      <%= link_to "Home", root_path %>
-      <div id="" class="container">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>
-          <%= link_to "Logout", destroy_user_session_path, :method=> :delete %>
-        <% else %>
+  <div class="" id="wrap">
+    <div class="" id="main">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">SurveyLance</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><% if user_signed_in? %>
+                <%= link_to "Logout", destroy_user_session_path, :method=> :delete %>
+              <% end %></li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+
+      <% if !user_signed_in? %>
+        <div class="container">
           <%= link_to "Sign Up", new_user_registration_path %>
           <%= link_to "Sign In", new_user_session_path %>
-          <div class="container" id="omni">
+          <div id="omni">
             <%= link_to user_omniauth_authorize_path(:github), class: "btn btn-block btn-social btn-lg btn-github" do%>
               <span class="fa fa-github"></span> Sign in with Github
             <% end %>
@@ -25,14 +45,33 @@
               <span class="fa fa-facebook"></span> Sign in with Facebook
             <% end %>
           </div>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <% if user_signed_in? %>
+          Logged in as <span class="text-muted"><%= current_user.email %></span>
+          <span class="navbar-right"><%= link_to "Logout", destroy_user_session_path, :method=> :delete %></span>
         <% end %>
       </div>
-    </div>  
-  </div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <%= yield %>
+      <div class="bottom-footer">
+        <div class="col-md-8 copyright">
+          &copy; Surveylance 2017.
+        </div>
+        <div class="col-md-4">
+          <ul class="footer-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, :only=> [:show, :update, :edit, :destroy, :show_stat]
   before_action :authenticate_user!, :only => [:show, :new, :create, :edit, :update, :destroy]
+  before_action :isOwner?, :only=> [:show]
 
   def index
     @surveys = Survey.all
@@ -13,10 +14,11 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
+    @survey.creator = current_user
     if @survey.save
-      render 'show'
+      redirect_to @survey
     else
-      redirect_to surveys_path
+      render 'index'
     end
   end
 
@@ -32,7 +34,6 @@ class SurveysController < ApplicationController
 
   def show_stat
     # raise params.inspect
-
   end
 
   private
@@ -41,7 +42,14 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-    params.require(:survey).permit(:title)
+    params.require(:survey).permit(:title, :description)
   end
+
+  def isOwner?
+    if !(user_signed_in? && @survey.creator == current_user)
+      redirect_to surveys_path, alert: 'Insufficient privilege.'
+    end
+  end
+
 
 end

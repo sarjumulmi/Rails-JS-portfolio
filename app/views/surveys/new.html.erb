@@ -1,10 +1,12 @@
 <div class="container">
-  <%= semantic_form_for @survey do |f| %>
+  
+  <%= semantic_form_for @survey, :html=>{:class=> "form-group"} do |f| %>
     <%= f.inputs do%>
-      <%= f.input :title, :label => "Survey Title" %>
+      <%= f.input :title, :label => "Survey Title", :input_html => { :class => 'form-control'} %>
+      <%= f.input :description, :label => "Description", :input_html => { :class => 'form-control'} %>
     <% end %>
     <%= f.actions do %>
-      <%= f.action :submit %>
+      <%= f.action :submit, :button_html => { :class => 'btn btn-primary btn-lg'}%>
       <%= f.action :cancel%>
     <% end %>
   <% end %>

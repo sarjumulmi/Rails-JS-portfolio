@@ -1,14 +1,36 @@
 <div class="container">
   <ul>
     <% @surveys.each do |survey| %>
-      <% if user_signed_in? && survey.creator_id == current_user.id %>
-        <li><%= link_to survey.title, survey_path(survey) %></li>
-      <% else %>
-        <li><%= link_to survey.title, take_survey_path(survey) %></li>
-      <% end %>
+      <li class="survey-list">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= survey.title %> <small class="created_at"> - about <%= time_ago_in_words(survey.created_at) %> ago</small></h3>
+
+          </div>
+          <div class="panel-body">
+            <%= survey.description %>
+          </div>
+          <div class="container">
+            <div class="survey-button">
+              <% if user_signed_in? %>
+                <%= link_to take_survey_path(survey) do%>
+                  <button type="button" class="btn btn-primary btn-sm">Take Survey</button>
+                <% end %>
+              <% end %>
+              <% if user_signed_in? && survey.creator == current_user%>
+                <%= link_to survey_path(survey) do%>
+                  <button type="button" class="btn btn-primary btn-sm">Edit Survey</button>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </li>
     <% end %>
   </ul>
   <% if user_signed_in? %>
-    <%= link_to "Add Survey", new_survey_path(@survey) %>
+    <%= link_to new_survey_path(@survey) do%>
+       <button type="button" class="btn btn-primary btn-lg">Add New Survey</button>
+    <% end %>
   <% end %>
 </div>
