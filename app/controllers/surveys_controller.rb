@@ -34,6 +34,7 @@ class SurveysController < ApplicationController
 
   def show_stat
     # raise params.inspect
+    # pass the count hash for answer {text : count}
   end
 
   private

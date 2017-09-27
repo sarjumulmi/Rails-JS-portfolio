@@ -1,8 +1,8 @@
 <div class="container">
   <h2>Add question for <%= @survey.title %></h2>
-  <%= semantic_form_for [@survey, @question] do |f| %>
+  <%= semantic_form_for [@survey, @question], :html=>{:class=> "form-group"} do |f| %>
     <%= f.inputs do %>
-      <%= f.input :question_text, :label => "Question: " %>
+      <%= f.input :question_text, :label => "Question: ",:input_html => { :class => 'form-control'} %>
     <% end %>
     <%= f.actions do %>
       <%= f.action :submit %>

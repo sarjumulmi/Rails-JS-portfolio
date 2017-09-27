@@ -1,19 +1,21 @@
 <div class="container">
   <h1><%= @survey.title %></h1>
 
-  <%= semantic_form_for @submission do |f| %>
+  <%= semantic_form_for @submission, :html=>{:class=> "form-group"} do |f| %>
     <%= f.input :survey_id, :as => :hidden %>
-    <ul>
-      <% @survey.questions.each do |question| %>
-        <li>
-          <%= question.question_text %>
-          <%= hidden_field_tag 'question_ids[]', question.id%>
-          <%= f.input :answers, :label => "", :as => :check_boxes, :collection => question.answer_choices.pluck(:answer_text, :id) %>
-        </li>
-      <% end %>
-    </ul>
+    <fieldset >
+      <ul class="list-group">
+        <% @survey.questions.each do |question| %>
+          <li class="list-group-item">
+            <h4><%= question.question_text %></h4>
+            <%= hidden_field_tag 'question_ids[]', question.id%>
+            <%= f.input :answers, :label => "", :as => :check_boxes, :collection => question.answer_choices.pluck(:answer_text, :id) %>
+          </li>
+        <% end %>
+      </ul>
+    </fieldset>
     <%= f.actions do %>
-      <%= f.action :submit %>
+      <%= f.action :submit, :button_html => { :class => 'btn btn-primary btn-lg'} %>
     <% end %>
   <% end %>
 </div>

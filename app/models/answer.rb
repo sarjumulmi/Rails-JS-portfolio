@@ -4,7 +4,5 @@ class Answer < ActiveRecord::Base
 
   validates :answer_text, presence: true
 
-  def self.answer_count(answer_choice)
-    where("answer_text=? and question_id = ?", answer_choice.answer_text, answer_choice.question_id).count
-  end
+  
 end
