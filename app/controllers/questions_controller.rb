@@ -16,7 +16,7 @@ before_action :authenticate_user!
       if @question.save
         redirect_to survey_path(@survey)
       else
-        render "surveys/index"
+        render "surveys/show"
       end
     end
   end

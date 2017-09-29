@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable,:omniauth_providers => [:facebook, :github]
 
-  has_many :created_surveys, :class_name=> "Survey", :foreign_key=>"creator_id"
+  has_many :created_surveys, :class_name=> "Survey", :foreign_key=>"creator_id", dependent: :destroy
   has_many :submissions, :foreign_key=>"submitter_id"
   has_many :participated_surveys, :through=> :submissions, :source=> :survey
 

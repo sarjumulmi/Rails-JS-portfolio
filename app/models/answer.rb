@@ -1,8 +1,8 @@
 class Answer < ActiveRecord::Base
-  belongs_to :question
+  belongs_to :answer_choice
   belongs_to :submission
 
-  validates :answer_text, presence: true
+  validates :answer_choice, presence: true
+  validates :submission, presence: true
 
-  
 end

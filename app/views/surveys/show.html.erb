@@ -3,11 +3,10 @@
   <h1><%= @survey.title %> </h1>
   <ul class="list-group">
     <% @survey.questions.each do |question| %>
-      <% if question.question_text %>
+      <% if question.valid? && question.question_text %>
         <li class="list-group-item">
           <%= question.question_text %>
-          <%= link_to "Add Answer Options", new_question_answer_choice_path(question, @answer_choice), :class => "btn btn-primary btn-sm" %>
-
+          <%= link_to "Add Answer Options", new_question_answer_choice_path(question), :class => "btn btn-primary btn-sm" %>
           <% question.answer_choices.each do |answer_choice| %>
             <ul >
               <% if answer_choice.answer_text %>
@@ -19,7 +18,7 @@
       <% end %>
     <% end %>
   </ul>
-  <%= semantic_form_for [@survey, @question], :html=>{:class=> "form-group"} do |q|%>
+  <%= semantic_form_for [@survey, @question||@survey.questions.build], :html=>{:class=> "form-group"} do |q|%>
     <%= q.inputs do %>
       <%= q.input :question_text, :label =>"Add New Question",:input_html => { :class => 'form-control'} %>
     <% end %>

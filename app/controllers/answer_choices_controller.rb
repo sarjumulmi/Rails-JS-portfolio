@@ -27,7 +27,7 @@ class AnswerChoicesController < ApplicationController
         redirect_to survey_path(@question.survey)
       else
         @survey = @question.survey
-        render "surveys/show"
+        render "answer_choices/new"
       end
     end
   end

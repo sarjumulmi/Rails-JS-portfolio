@@ -9,6 +9,7 @@
             <% question.answer_choices.each do |answer_choice| %>
               <div class="">
                 <%= answer_choice.answer_text %> - <%= question.answer_count[answer_choice.answer_text] %>
+                
               </div>
             <% end %>
           </div>

@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, :only=> [:show, :update, :edit, :destroy, :show_stat]
   before_action :authenticate_user!, :only => [:show, :new, :create, :edit, :update, :destroy]
-  before_action :isOwner?, :only=> [:show]
+  before_action :isOwner?, :only=> [:show, :edit, :update, :destroy]
 
   def index
     @surveys = Survey.all
@@ -18,17 +18,19 @@ class SurveysController < ApplicationController
     if @survey.save
       redirect_to @survey
     else
-      render 'index'
+
+      render 'new'
     end
   end
 
   def show
-    @question = @survey.questions.build
-    @answer_choice = @question.answer_choices.build
+    # @question = @survey.questions.build
+    # binding.pry
+
   end
 
   def take_survey
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find(params[:survey_id])
     @submission = @survey.submissions.build
   end
 
