@@ -1,16 +1,18 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_user!
   before_action :allQuestionAnswered?, :only => [:create]
-  before_action :set_survey, :only => [:create]
+  before_action :set_survey, :only => [:new, :create]
 
+  def new
+    @submission = @survey.submissions.build
+  end
 
   def create
     # raise params.inspect
-    # { "id" ="3"}
-    # "submission"=>
+    # "submission"=>{
       # "answer_choice_ids"=>["", "2", "", "5", "", "9", "", "12", "", "15", "", "17"]
     # },
-
+    # "survey_id"=>"3"
     @submission = @survey.submissions.build
     @submission.submitter = current_user
     @submission.build_from_answer_choice(params[:submission][:answer_choice_ids])

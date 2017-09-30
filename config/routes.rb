@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
 
   resources :surveys, :shallow=> true do
-    get 'take_survey' => "surveys#take_survey" , :as => "take_survey"
+    get 'take_survey' => "submissions#new" , :as => "take_survey"
     resources :submissions, :only => [:create]
     resources :questions do
       resources :answer_choices
     end
   end
 
-  resources :submissions, :only => [:create]
+  
 
   # get "/take-survey/:id" => "surveys#take_survey", :as => "take_survey"
   get "/surveys/:id/show-stat" => "surveys#show_stat", :as => "survey_show_stat"

@@ -29,10 +29,6 @@ class SurveysController < ApplicationController
 
   end
 
-  def take_survey
-    @survey = Survey.find(params[:survey_id])
-    @submission = @survey.submissions.build
-  end
 
   def show_stat
     # raise params.inspect
