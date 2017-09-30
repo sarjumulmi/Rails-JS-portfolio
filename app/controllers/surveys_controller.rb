@@ -18,15 +18,12 @@ class SurveysController < ApplicationController
     if @survey.save
       redirect_to @survey
     else
-
       render 'new'
     end
   end
 
   def show
-    # @question = @survey.questions.build
     # binding.pry
-
   end
 
 

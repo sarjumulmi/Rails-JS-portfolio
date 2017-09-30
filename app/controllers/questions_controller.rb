@@ -16,18 +16,11 @@ before_action :authenticate_user!
       if @question.save
         redirect_to survey_path(@survey)
       else
-        render "surveys/show"
+        render 'new'
       end
     end
   end
 
-  def index
-    if params[:survey_id]
-      @survey = Survey.find(params[:survey_id])
-      @questions = @survey.questions
-      @question = @survey.questions.build
-    end
-  end
 
   private
   def question_params

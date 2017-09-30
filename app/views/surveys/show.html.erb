@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h1><%= @survey.title %> </h1>
+  <h1><%= @survey.title.titleize %> </h1>
   <ul class="list-group">
     <% @survey.questions.each do |question| %>
       <% if question.valid? && question.question_text %>
@@ -18,12 +18,13 @@
       <% end %>
     <% end %>
   </ul>
-  <%= semantic_form_for [@survey, @question||@survey.questions.build], :html=>{:class=> "form-group"} do |q|%>
+  <%= link_to "Add New Question", new_survey_question_path(@survey), :class => "btn btn-primary" %>
+  <!-- <%= semantic_form_for [@survey, @question||@survey.questions.build], :html=>{:class=> "form-group"} do |q|%>
     <%= q.inputs do %>
       <%= q.input :question_text, :label =>"Add New Question",:input_html => { :class => 'form-control'} %>
     <% end %>
     <%= q.actions do %>
       <%= q.action :submit, :button_html => { :class => 'btn btn-primary btn-lg'} %>
     <% end %>
-  <% end %>
+  <% end %> -->
 </div>
