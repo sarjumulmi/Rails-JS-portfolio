@@ -6,7 +6,7 @@ Logged in users can also participate in exciting and engaging surveys posted by 
 
 SurveLance is created with Ruby on Rails framework.
 
-#Setup
+##Setup
 
 You will need the following software:
 
