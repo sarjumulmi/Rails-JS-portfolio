@@ -6,26 +6,18 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><%= survey.title %> <small class="created_at"> - about <%= time_ago_in_words(survey.created_at) %> ago</small></h3>
-
           </div>
           <div class="panel-body">
             <%= survey.description %>
           </div>
-
           <div class="survey-button">
-            <% if user_signed_in? %>
-              <%= link_to "Take Survey", survey_take_survey_path(survey), :class => "btn btn-primary btn-sm" %>
-            <% end %>
-            <% if user_signed_in? && survey.creator == current_user%>
-              <%= link_to "Edit Survey", survey_path(survey), :class => "btn btn-primary btn-sm" %>
-              <%= link_to "View Stat", survey_show_stat_path(survey), :class => "btn btn-primary btn-sm"%>
-            <% end %>
+            <%= button_take_survey(survey) %>
+            <%= button_edit_survey(survey) %>
+            <%= button_survey_stat(survey) %>
           </div>
         </div>
       </li>
     <% end %>
   </ul>
-  <% if user_signed_in? %>
-    <%= link_to "Add New Survey", new_survey_path(@survey), :class => "btn btn-primary btn-lg" %>
-  <% end %>
+  <%= button_create_survey(@survey) %>
 </div>
