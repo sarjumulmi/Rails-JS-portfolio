@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-  
+
 
   # get "/take-survey/:id" => "surveys#take_survey", :as => "take_survey"
   get "/surveys/:id/show-stat" => "surveys#show_stat", :as => "survey_show_stat"
-
+  get "/surveys/:id/publish" => "surveys#publish", :as => "survey_publish"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

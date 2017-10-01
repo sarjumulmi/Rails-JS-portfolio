@@ -14,7 +14,7 @@ before_action :authenticate_user!
       @survey = Survey.find(params[:survey_id])
       @question = @survey.questions.build(question_params)
       if @question.save
-        redirect_to survey_path(@survey)
+        redirect_to survey_path(@survey), :notice => "Question successfully created."
       else
         render 'new'
       end

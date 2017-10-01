@@ -1,6 +1,8 @@
 <%= title "#{@survey.title.titleize} page" %>
 <div class="container">
-  <h1><%= @survey.title.titleize %> </h1>
+  <div class="back-to-survey">
+    <h1><%= @survey.title.titleize %> - <%= button_publish(@survey)%></h1>
+  </div>
   <ul class="list-group">
     <% @survey.questions.each do |question| %>
       <% if question.valid? && question.question_text %>

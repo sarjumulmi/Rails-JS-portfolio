@@ -1,10 +1,10 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, :only=> [:show, :update, :edit, :destroy, :show_stat]
+  before_action :set_survey, :only=> [:show, :update, :edit, :destroy, :show_stat, :publish]
   before_action :authenticate_user!, :only => [:show, :new, :create, :edit, :update, :destroy]
-  before_action :isOwner?, :only=> [:show, :edit, :update, :destroy]
+
 
   def index
-    @surveys = Survey.all
+    @surveys = policy_scope(Survey)
     @survey = Survey.new
   end
 
@@ -23,6 +23,7 @@ class SurveysController < ApplicationController
   end
 
   def show
+    authorize @survey
     # binding.pry
   end
 
@@ -30,6 +31,13 @@ class SurveysController < ApplicationController
   def show_stat
     # raise params.inspect
     # pass the count hash for answer {text : count}
+    authorize @survey, :show_stat?
+  end
+
+  def publish
+    authorize @survey, :show?
+    @survey.update_attributes(:status => true)
+    redirect_to root_path, :notice => "Survey successfully published."
   end
 
   private
@@ -39,12 +47,6 @@ class SurveysController < ApplicationController
 
   def survey_params
     params.require(:survey).permit(:title, :description)
-  end
-
-  def isOwner?
-    if !(user_signed_in? && @survey.creator == current_user)
-      redirect_to surveys_path, alert: 'Insufficient privilege.'
-    end
   end
 
 
