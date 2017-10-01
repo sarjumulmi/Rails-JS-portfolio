@@ -11,15 +11,7 @@ class AnswerChoicesController < ApplicationController
   end
 
   def create
-    # if params[:survey_id]
-    #   @survey = Survey.find(params[:survey_id])
-    #   @question = @survey.questions.build(question_params)
-    #   if @question.save
-    #     redirect_to survey_path(@survey)
-    #   else
-    #     render "surveys/index"
-    #   end
-    # end
+    
     if params[:question_id]
       @question = Question.find(params[:question_id])
       @answer_choice = @question.answer_choices.build(answer_choice_params)

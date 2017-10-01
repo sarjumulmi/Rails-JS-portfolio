@@ -1,3 +1,4 @@
+<%= title "Survey List" %>
 <div class="container">
   <ul>
     <% @surveys.each do |survey| %>
@@ -13,27 +14,18 @@
 
           <div class="survey-button">
             <% if user_signed_in? %>
-              <%= link_to survey_take_survey_path(survey) do%>
-                <button type="button" class="btn btn-primary btn-sm">Take Survey</button>
-              <% end %>
+              <%= link_to "Take Survey", survey_take_survey_path(survey), :class => "btn btn-primary btn-sm" %>
             <% end %>
             <% if user_signed_in? && survey.creator == current_user%>
-              <%= link_to survey_path(survey) do%>
-                <button type="button" class="btn btn-primary btn-sm">Edit Survey</button>
-              <% end %>
-              <%= link_to survey_show_stat_path(survey) do%>
-                <button type="button" class="btn btn-primary btn-sm">View Stat</button>
-              <% end %>
+              <%= link_to "Edit Survey", survey_path(survey), :class => "btn btn-primary btn-sm" %>
+              <%= link_to "View Stat", survey_show_stat_path(survey), :class => "btn btn-primary btn-sm"%>
             <% end %>
           </div>
-
         </div>
       </li>
     <% end %>
   </ul>
   <% if user_signed_in? %>
-    <%= link_to new_survey_path(@survey) do%>
-       <button type="button" class="btn btn-primary btn-lg">Add New Survey</button>
-    <% end %>
+    <%= link_to "Add New Survey", new_survey_path(@survey), :class => "btn btn-primary btn-lg" %>
   <% end %>
 </div>

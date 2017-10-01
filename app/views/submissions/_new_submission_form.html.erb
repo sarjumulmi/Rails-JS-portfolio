@@ -1,0 +1,12 @@
+<ul class="list-group">
+  <% @survey.questions.each do |question| %>
+    <li class="list-group-item">
+      <h4><%= question.question_text %></h4>
+      <%= f.input :answer_choice_ids, :label => "", :as => :check_boxes, :collection => question.answer_choices.pluck(:answer_text, :id) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= f.actions do %>
+<%= f.action :submit, :button_html => { :class => 'btn btn-primary btn-lg'} %>
+<% end %>

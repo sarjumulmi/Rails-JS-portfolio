@@ -1,20 +1,9 @@
+<%= title @survey.title.titleize %>
 <div class="container">
-  <h1><%= @survey.title %></h1>
+  <h1><%= @survey.title.titleize %></h1>
 
   <%= semantic_form_for [@survey, @submission], :html=>{:class=> "form-group"} do |f| %>
     <!-- <%= f.input :survey_id, :as => :hidden %> -->
-    <fieldset >
-      <ul class="list-group">
-        <% @survey.questions.each do |question| %>
-          <li class="list-group-item">
-            <h4><%= question.question_text %></h4>
-            <%= f.input :answer_choice_ids, :label => "", :as => :check_boxes, :collection => question.answer_choices.pluck(:answer_text, :id) %>
-          </li>
-        <% end %>
-      </ul>
-    </fieldset>
-    <%= f.actions do %>
-      <%= f.action :submit, :button_html => { :class => 'btn btn-primary btn-lg'} %>
-    <% end %>
+      <%= render 'new_submission_form', f:f %>
   <% end %>
 </div>

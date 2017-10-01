@@ -1,3 +1,4 @@
+<%= title "#{@survey.title.titleize} stats" %>
 <div class="container">
   <h1><%= @survey.title %><small class="badge badge-info"><%= @survey.submissions.size %> responses. </small></h1>
   <ul class="list-group">
@@ -9,13 +10,11 @@
             <% question.answer_choices.each do |answer_choice| %>
               <div class="">
                 <%= answer_choice.answer_text %> - <%= question.answer_count[answer_choice.answer_text] %>
-                
               </div>
             <% end %>
           </div>
         </li>
       </fieldset>
-
     <% end %>
   </ul>
 
