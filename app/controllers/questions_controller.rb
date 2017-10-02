@@ -3,9 +3,11 @@ before_action :authenticate_user!
 
   def new
     if params[:survey_id]
+
       @survey = Survey.find(params[:survey_id])
       @question = @survey.questions.build
       # raise @question.inspect
+      authorize @question
     end
   end
 

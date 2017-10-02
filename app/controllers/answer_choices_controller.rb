@@ -6,12 +6,13 @@ class AnswerChoicesController < ApplicationController
       @question = Question.find(params[:question_id])
       @survey = @question.survey
       @answer_choice = @question.answer_choices.build
+      authorize @answer_choice
       # raise @question.inspect
     end
   end
 
   def create
-    
+
     if params[:question_id]
       @question = Question.find(params[:question_id])
       @answer_choice = @question.answer_choices.build(answer_choice_params)
