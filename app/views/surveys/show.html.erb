@@ -1,8 +1,18 @@
 <%= title "#{@survey.title.titleize} page" %>
 <div class="container">
   <div class="back-to-survey">
-    <h1><%= @survey.title.titleize %> <%= button_publish(@survey)%></h1>
+    <%= button_publish(@survey)%></h1>
+    <%= semantic_form_for @survey, :html=>{:class=> "form-group"}  do |f| %>
+      <%= f.inputs do %>
+        <%= f.input :title, :input_html => { :class => 'form-control'} %>
+        <%= f.input :description,:input_html => { :class => 'form-control'} %>
+      <% end %>
+      <%= f.actions do %>
+          <%= f.action :submit, :button_html => { :class => 'btn btn-primary'} %>
+      <% end %>
+    <% end %>
   </div>
+
   <ul class="list-group">
     <% @survey.questions.each do |question| %>
       <% if question.valid? && question.question_text %>
@@ -10,7 +20,7 @@
           <%= question.question_text %>
           <%= link_to "Add Answer Options", new_question_answer_choice_path(question), :class => "btn btn-primary btn-sm" %>
           <% question.answer_choices.each do |answer_choice| %>
-            <ul >
+            <ul>
               <% if answer_choice.answer_text %>
                 <li class="list-group-item"><%= answer_choice.answer_text %></li>
               <% end %>

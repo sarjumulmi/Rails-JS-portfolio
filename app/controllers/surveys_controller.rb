@@ -27,6 +27,15 @@ class SurveysController < ApplicationController
     # binding.pry
   end
 
+  def update
+    if @survey.update_attributes(survey_params)
+      redirect_to survey_path(@survey)
+    else
+      render @survey, :notice => "Update Unsuccessful."
+    end
+
+  end
+
 
   def show_stat
     # raise params.inspect
