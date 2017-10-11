@@ -12,6 +12,12 @@ module SurveysHelper
     end
   end
 
+  def button_delete_survey(survey)
+    if user_signed_in? && survey.creator == current_user 
+      link_to("Delete Survey", survey, :method => :delete, data: {:confirm => "Are you sure?"}, :class => "btn btn-primary btn-sm")
+    end
+  end
+
   def button_survey_stat(survey)
     if user_signed_in? && survey.creator == current_user && survey.published?
       link_to("View Stat", survey_show_stat_path(survey), :class => "btn btn-primary btn-sm")

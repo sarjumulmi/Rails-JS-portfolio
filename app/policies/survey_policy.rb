@@ -8,6 +8,10 @@ class SurveyPolicy <  ApplicationPolicy
     record.creator == user && record.published? == true
   end
 
+  def destroy?
+    record.creator == user
+  end
+
   class Scope < Scope
     def resolve
         scope.where(creator: user).or(scope.where(status: true))

@@ -33,7 +33,12 @@ class SurveysController < ApplicationController
     else
       render @survey, :notice => "Update Unsuccessful."
     end
+  end
 
+  def destroy
+    authorize @survey
+    @survey.destroy
+    redirect_to root_path, :notice => "Survey deleted!"
   end
 
 
