@@ -31,6 +31,8 @@ GITHUB_SECRET=<your github secret here>
 FACEBOOK_KEY=<your facebook id here>
 FACEBOOK_SECRET<your facebook secret here>
 ```
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/sarjumulmi/rails-portfolio-survey-app/issues
 
 ## License
 
