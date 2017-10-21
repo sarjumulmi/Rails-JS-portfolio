@@ -13,23 +13,29 @@
     <% end %>
   </div>
 
-  <ul class="list-group">
-    <% @survey.questions.each do |question| %>
-      <% if question.valid? && question.question_text %>
-        <li class="list-group-item">
-          <%= question.question_text %>
-          <%= link_to "Add Answer Options", new_question_answer_choice_path(question), :class => "btn btn-primary btn-sm" %>
-          <% question.answer_choices.each do |answer_choice| %>
-            <ul>
-              <% if answer_choice.answer_text %>
-                <li class="list-group-item"><%= answer_choice.answer_text %></li>
-              <% end %>
-            </ul>
-          <% end %>
-        </li>
+
+    <ul class="list-group">
+      <% @survey.questions.each do |question| %>
+        <% if question.valid? && question.question_text %>
+          <li class="list-group-item">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= question.question_text %>
+                <%= link_to "Add Answer Options", new_question_answer_choice_path(question), :class => "btn btn-primary btn-sm" %>
+              </div>
+            <% question.answer_choices.each do |answer_choice| %>
+              <ul>
+                <% if answer_choice.answer_text %>
+                  <li class="list-group-item"><%= answer_choice.answer_text %></li>
+                <% end %>
+              </ul>
+            <% end %>
+            </div>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+
   <%= link_to "Add New Question", new_survey_question_path(@survey), :class => "btn btn-primary" %>
 
 </div>
