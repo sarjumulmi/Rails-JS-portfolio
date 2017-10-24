@@ -8,7 +8,7 @@ class Survey < ActiveRecord::Base
   validates :description, presence: true, length: { minimum: 8 }
   validates :creator, presence: true
 
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, allow_destroy: true, :reject_if => proc {|atr| atr[:question_text].blank?}
 
   def published?
     status == true

@@ -1,9 +1,9 @@
 class Question < ActiveRecord::Base
   belongs_to :survey
+  # may require :optional => true
   has_many :answer_choices, dependent: :destroy
 
-  validates :question_text, presence: true, length: { minimum: 10 }
-  validates :survey, presence: true
+  accepts_nested_attributes_for :answer_choices, allow_destroy: true, :reject_if => proc {|atr| atr[:answer_text].blank?}
 
   def answer_count
     answer_count_hash = {}

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :participated_surveys, :through=> :submissions, :source=> :survey
 
   validates_associated :created_surveys
-  validates_associated :submitted_surveys
+  validates_associated :participated_surveys
 
   def self.from_omniauth(auth)
     where(:provider=>auth.provider, :uid=>auth.uid).first_or_create do |user|
