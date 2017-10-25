@@ -131,10 +131,18 @@ div.field_with_errors input[type="text"], li.error input[type="text"] {
   border: 1px solid red;
 }
 
-div.back-to-survey a.btn.btn-primary {
+div.back-to-survey a.btn.btn-primary{
     float: right;
+    margin: 5px 5px 5px 0px;
 }
+
+
 
 a.btn.btn-block.btn-social.btn-lg {
     background-color: #a8a9ad;
+}
+
+.remove-records.btn-primary {
+  display: inline;
+  float:right;
 }

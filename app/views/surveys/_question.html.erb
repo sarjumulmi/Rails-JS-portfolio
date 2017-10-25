@@ -1,6 +1,10 @@
 
-<%= q.input :question_text, :label=> "Add Question", :input_html => { :class => 'form-control'} %>
-<%= q.semantic_fields_for :answer_choices do |ac| %>
-    <%= ac.input :answer_text, :label=> "Add Answer Options", :input_html => { :class => 'form-control'} %>
-<% end %>
-</ul>
+<fieldset>
+  <legend></legend>
+  <%= q.input :_destroy, :as => :hidden %>
+  <%= link_to 'Delete Question', '#', :class => 'remove-records btn btn-primary' %>
+  <%= q.input :question_text, :label=> "Add Question", :input_html => { :class => 'form-control'} %>
+  <%= q.semantic_fields_for :answer_choices do |ac| %>
+      <%= render 'answer_choice', ac: ac %>
+  <% end %>
+</fieldset>

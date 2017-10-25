@@ -9,8 +9,10 @@ class SurveysController < ApplicationController
 
   def new
     @survey = current_user.created_surveys.build
-    @question = @survey.questions.build
-    3.times { @question.answer_choices.build}
+    2.times do
+      @question = @survey.questions.build
+      3.times { @question.answer_choices.build}
+    end
   end
 
   def create
