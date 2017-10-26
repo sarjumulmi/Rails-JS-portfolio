@@ -142,7 +142,22 @@ a.btn.btn-block.btn-social.btn-lg {
     background-color: #a8a9ad;
 }
 
-.remove-records.btn-primary {
+.remove-records.btn-danger {
   display: inline;
   float:right;
+}
+
+.remove-records.delete-link {
+  color: red;
+  padding-left: 30px;
+}
+
+a.add_fields.btn.btn-lg {
+  margin-left: 30px;
+}
+
+div.add-question-btn {
+  margin-top: 10px;
+  border-top: 2px solid #333;
+  padding-top: 15px;
 }

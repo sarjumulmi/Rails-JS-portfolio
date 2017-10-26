@@ -1,14 +1,18 @@
 <%= f.inputs do%>
   <%= f.input :title, :label => "Survey Title", :input_html => { :class => 'form-control'} %>
   <%= f.input :description, :label => "Description", :input_html => { :class => 'form-control'} %>
-
-    <%= f.semantic_fields_for :questions do |q| %>
-        <%= render 'question', q: q%>
-    <% end %>
+    <div class="fields">
+      <%= f.semantic_fields_for :questions do |builder| %>
+          <%= render 'question', f: builder%>
+      <% end %>
+    </div>
+    <div class="add-question-btn">
+      <%= link_to_add_fields("Add Question",  f, :questions, :class => 'btn btn-primary btn-lg') %>
+    </div>
 
 <% end %>
 
 <%= f.actions do %>
-  <%= f.action :submit, :button_html => { :class => 'btn btn-primary btn-lg'}%>
+  <%= f.action :submit, :button_html => { :class => 'btn btn-success btn-lg'}%>
   <%= f.action :cancel%>
 <% end %>

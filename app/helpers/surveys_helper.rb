@@ -31,7 +31,7 @@ module SurveysHelper
   end
 
   def button_publish(survey)
-    link_to("Publish Survey", survey_publish_path(survey), :class => "btn btn-primary")
+    link_to("Publish Survey", survey_publish_path(survey), :class => "btn btn-primary btn-info")
   end
 
 end

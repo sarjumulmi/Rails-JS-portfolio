@@ -1,10 +1,12 @@
 <%= title "Edit Survey" %>
 <div class="container">
-  <div class="back-to-survey">
-    <%= button_publish(@survey)%>
-  </div>
+  <div class="clearfix">
+    <div class="back-to-survey">
+      <%= button_publish(@survey)%>
+    </div>
 
-  <%= semantic_form_for @survey, :html=>{:class=> "form-group"} do |f| %>
-    <%= render 'new_survey_form', f:f %>
-  <% end %>
+    <%= semantic_form_for @survey, :html=>{:class=> "form-group"} do |f| %>
+      <%= render 'new_survey_form', f:f %>
+    <% end %>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 <fieldset>
-  <%= ac.input :answer_text, :label=> "Answer Options", :input_html => { :class => 'form-control'} %>
-  <%= ac.input :_destroy, :as => :hidden %>
-  <%= link_to 'Delete', '#', :class => 'remove-records' %>
+  <%= f.input :answer_text, :label=> "Answer Options", :input_html => { :class => 'form-control'} %>
+  <%= f.input :_destroy, :as => :hidden %>
+  <%= link_to 'Delete Answer', '#', :class => 'remove-records btn btn-link delete-link' %>
 </fieldset>
