@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users
+
 
 
   # get "/take-survey/:id" => "surveys#take_survey", :as => "take_survey"

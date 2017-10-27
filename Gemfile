@@ -32,6 +32,7 @@ gem 'omniauth-github'
 gem 'formtastic', '~> 3.0'
 gem 'pundit'
 gem 'where-or'
+gem 'active_model_serializers'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
