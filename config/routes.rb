@@ -9,10 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
-
-
-
   # get "/take-survey/:id" => "surveys#take_survey", :as => "take_survey"
   get "/surveys/:id/show-stat" => "surveys#show_stat", :as => "survey_show_stat"
   get "/surveys/:id/publish" => "surveys#publish", :as => "survey_publish"
@@ -24,6 +20,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'surveys#index'
   devise_for :users, :controllers=> {:omniauth_callbacks => "users/omniauth_callbacks"}
+
+  resources :users, :only => [:show] do
+    resources :surveys, :only => [:index]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
