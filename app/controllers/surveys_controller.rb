@@ -3,16 +3,22 @@ class SurveysController < ApplicationController
   before_action :authenticate_user!, :only => [:show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @surveys = policy_scope(Survey)
-    @survey = Survey.new
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      # @surveys = Survey.where('creator_id = ?', @user.id).or(Survey.where(id: @user.participated_surveys))
+      render :json=> @user
+    else
+      @surveys = policy_scope(Survey)
+      @survey = Survey.new
+    end
   end
 
   def new
     @survey = current_user.created_surveys.build
-    2.times do
-      @question = @survey.questions.build
-      3.times { @question.answer_choices.build}
-    end
+    # 2.times do
+    #   @question = @survey.questions.build
+    #   3.times { @question.answer_choices.build}
+    # end
   end
 
   def create

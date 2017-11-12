@@ -1,2 +1,26 @@
-<%= @user.email %><br>
-<%= link_to "Show User Surveys", user_surveys_path(@user) %>
+<div class="container">
+  <%= @user.email %><br>
+  <%= link_to "Show User Surveys", user_surveys_path(@user), :id => "show-survey" %>
+  <div id="user-created-surveys">
+
+  </div>
+
+  heelloo
+  <div id="user-participated-surveys">
+
+  </div>
+  <script type="text/x-handlebars-template" id="user-surveys-template">
+    <ul>
+
+      {{#each this}}
+
+        <li>
+          {{id}} - {{title}} - {{description}}
+
+        </li>
+
+      {{/each}}
+    </ul>
+  </script>
+  <!-- create 2 templates for 2 types of surveys -->
+</div>
