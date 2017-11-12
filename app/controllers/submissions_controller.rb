@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
     @submission.build_from_answer_choice(params[:submission][:answer_choice_ids])
 
     if @submission.save
-      redirect_to survey_show_stat_path(@survey), :notice => "Survey sucessfully submitted."
+      redirect_to root_path, :notice => "Survey sucessfully submitted."
     else
       render "surveys/take_survey"
     end

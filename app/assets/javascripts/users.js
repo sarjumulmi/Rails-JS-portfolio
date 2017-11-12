@@ -6,6 +6,7 @@ function Survey(attributes){
 }
 
 $(function () {
+  Handlebars.registerPartial('survey-partial', $('#survey-partial-template').html())
   Survey.template = Handlebars.compile($('#user-surveys-template').html())
 })
 

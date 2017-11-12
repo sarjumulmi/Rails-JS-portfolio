@@ -10,17 +10,16 @@
 
   </div>
   <script type="text/x-handlebars-template" id="user-surveys-template">
+    {{>survey-partial}}
+  </script>
+  <!-- templates for 2 types of surveys -->
+  <script type="text/x-handlebars-template" id="survey-partial-template">
     <ul>
-
       {{#each this}}
-
         <li>
           {{id}} - {{title}} - {{description}}
-
         </li>
-
       {{/each}}
     </ul>
   </script>
-  <!-- create 2 templates for 2 types of surveys -->
 </div>

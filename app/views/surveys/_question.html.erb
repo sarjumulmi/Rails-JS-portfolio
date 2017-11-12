@@ -3,7 +3,7 @@
   <legend></legend>
   <%= f.input :_destroy, :as => :hidden %>
   <%= link_to 'Delete Question', '#', :class => 'remove-records btn btn-danger' %>
-  <%= f.input :question_text, :label=> "Add Question", :input_html => { :class => 'form-control'} %>
+  <%= f.input :question_text, :label=> "Question", :input_html => { :class => 'form-control'} %>
   <div class="fields">
     <%= f.semantic_fields_for :answer_choices do |builder| %>
         <%= render 'answer_choice', f: builder %>
