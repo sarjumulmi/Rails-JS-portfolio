@@ -3,6 +3,7 @@ function Survey(attributes){
   this.description = attributes.description
   this.title = attributes.title
   this.creator_id = attributes.creator_id
+  this.created = attributes.created
 }
 
 $(function () {

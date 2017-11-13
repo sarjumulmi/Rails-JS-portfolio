@@ -20,6 +20,7 @@
             <th scope="col"></th>
             <th scope="col">Survey Title</th>
             <th scope="col">Survey Description</th>
+            <th scope="col">Created</th>
           </thead>
           <tbody>
             {{#each survey}}
@@ -27,6 +28,7 @@
                 <th scope="row">{{inc @index}}</th>
                 <td>{{title}}</td>
                 <td>{{description}}</td>
+                <td>{{created}}</td>
               </tr>
             {{/each}}
           </tbody>
