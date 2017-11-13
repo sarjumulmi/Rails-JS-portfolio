@@ -1,11 +1,11 @@
 <div class="container">
-  <%= @user.email %><br>
+  <h1 class="page-header"><%= current_user.email %>'s  Profile</h1>
   <%= link_to "Show User Surveys", user_surveys_path(@user), :id => "show-survey" %>
   <div id="user-created-surveys">
 
   </div>
 
-  heelloo
+
   <div id="user-participated-surveys">
 
   </div>
@@ -14,12 +14,23 @@
   </script>
   <!-- templates for 2 types of surveys -->
   <script type="text/x-handlebars-template" id="survey-partial-template">
-    <ul>
-      {{#each this}}
-        <li>
-          {{id}} - {{title}} - {{description}}
-        </li>
-      {{/each}}
-    </ul>
+      <h3 style="text-align: center;" class="page-header">{{title}}</h3>
+        <table class="table table-striped table-sm">
+          <thead>
+            <th scope="col"></th>
+            <th scope="col">Survey Title</th>
+            <th scope="col">Survey Description</th>
+          </thead>
+          <tbody>
+            {{#each survey}}
+              <tr>
+                <th scope="row">{{inc @index}}</th>
+                <td>{{title}}</td>
+                <td>{{description}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
   </script>
 </div>
