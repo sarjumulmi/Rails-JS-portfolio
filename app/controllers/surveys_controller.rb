@@ -37,6 +37,7 @@ class SurveysController < ApplicationController
 
   def show
     authorize @survey
+    render :json=> @survey
     # binding.pry
   end
 

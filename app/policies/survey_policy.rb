@@ -1,7 +1,7 @@
 class SurveyPolicy <  ApplicationPolicy
 
   def show?
-    record.creator == user && record.published? == false
+    record.creator == user
   end
 
   def show_stat?

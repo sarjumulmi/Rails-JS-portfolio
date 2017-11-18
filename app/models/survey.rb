@@ -10,6 +10,17 @@ class Survey < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions, allow_destroy: true, :reject_if => proc {|atr| atr[:question_text].blank?}
 
+  scope :next, lambda {|id| where("id > ?",id).order("id ASC") } # this is the default ordering for AR
+  scope :previous, lambda {|id| where("id < ?",id).order("id DESC") }
+
+  def next
+    Survey.where('creator_id=?',self.creator_id).next(self.id).first
+  end
+
+  def previous
+    Survey.where('creator_id=?',self.creator_id).previous(self.id).first
+  end
+
   def published?
     status == true
   end
