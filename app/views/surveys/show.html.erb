@@ -1,9 +1,9 @@
 <%= title "#{@survey.title.titleize} page" %>
-<div class="container">
+<div class="show-body container">
 
-    <div class="back-to-survey">
+    <!-- <div class="back-to-survey">
       <%= button_publish(@survey)%>
-    </div>
+    </div> -->
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -36,7 +36,43 @@
     <% end %>
   </ul>
 
-  <%= link_to("Previous", user_survey_path(params[:user_id], @survey.previous)) if @survey.previous %>
-  <%= link_to("Next", user_survey_path(params[:user_id], @survey.next)) if @survey.next %>
-
+  <%= link_to("Previous", user_survey_path(params[:user_id], @survey.previous), :class=> "pagination") if @survey.previous %>
+  <%= link_to("Next", user_survey_path(params[:user_id], @survey.next), :class=> "pagination") if @survey.next %>
 </div>
+
+<!-- handlebar template -->
+<script type="text/x-handlebars-template" id="survey-show-template">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{title}}
+    </div>
+    <div class="list-group-item">
+      {{description}}
+    </div>
+  </div>
+
+  <ul class="list-group">
+    {{#each questions}}
+      <li class="list-group-item">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {{question_text}}
+          </div>
+          <ul>
+            {{#each answer_choices}}
+              <li class="list-group-item">{{answer_text}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if previousSurvey}}
+    <a href="/users/1/surveys/2" id="prev">Previous</a>
+  {{/if}}
+  {{#if nextSurvey}}
+    <a href="/users/1/surveys/4" id="next">Next</a>
+  {{/if}}
+
+</script>

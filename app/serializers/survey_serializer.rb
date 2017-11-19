@@ -1,5 +1,5 @@
 class SurveySerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :creator_id, :nextSurvey, :previousSurvey
+  attributes :id, :title, :description, :creator_id, :status, :nextSurvey, :previousSurvey
   has_many :questions
 
   def nextSurvey

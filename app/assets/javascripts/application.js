@@ -17,3 +17,4 @@
 //= require handlebars.min
 //= require surveys
 //= require users
+//= require survey_show

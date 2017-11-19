@@ -6,7 +6,7 @@ function Survey(attributes){
   this.created = attributes.created
 }
 
-$(function () {
+$(document).ready(function () {
   Handlebars.registerHelper("inc", function(value, options){
     return parseInt(value) + 1;
   });

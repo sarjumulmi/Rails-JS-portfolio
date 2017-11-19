@@ -37,7 +37,10 @@ class SurveysController < ApplicationController
 
   def show
     authorize @survey
-    render :json=> @survey
+    respond_to do |f|
+      f.html
+      f.json {render :json=> @survey}
+    end
     # binding.pry
   end
 
