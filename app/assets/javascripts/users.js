@@ -6,15 +6,17 @@ function Survey(attributes){
   this.created = attributes.created
 }
 
-$(document).ready(function () {
+
+$(document).on('turbolinks:load', function (){
   Handlebars.registerHelper("inc", function(value, options){
     return parseInt(value) + 1;
   });
-  Handlebars.registerPartial('survey-partial', $('#survey-partial-template').html())
-  Survey.template = Handlebars.compile($('#user-surveys-template').html())
-})
+  // debugger;
+  if ($('#survey-partial-template').html()) {
+    Handlebars.registerPartial('survey-partial', $('#survey-partial-template').html())
+    Survey.template = Handlebars.compile($('#user-surveys-template').html())
+  }  
 
-$(function (){
   $('#show-survey').on('click', function(evt){
     // console.log('ciked')
     $.get(this.href)

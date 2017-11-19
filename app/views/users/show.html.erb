@@ -1,18 +1,19 @@
 <div class="container">
   <h1 class="page-header"><%= current_user.email %>'s  Profile</h1>
-  <%= link_to "Show User Surveys", user_surveys_path(@user), :id => "show-survey" %>
+  <%= link_to "My Survey List", user_surveys_path(@user), :id => "show-survey", :class => 'btn btn-primary' %>
+  <%= link_to "My Survey Details", user_survey_path(@user, 1), :class => 'btn btn-primary' %>
   <div id="user-created-surveys">
 
   </div>
 
-
   <div id="user-participated-surveys">
 
   </div>
+
   <script type="text/x-handlebars-template" id="user-surveys-template">
     {{>survey-partial}}
   </script>
-  <!-- templates for 2 types of surveys -->
+  <!-- partial surveys -->
   <script type="text/x-handlebars-template" id="survey-partial-template">
       <h3 style="text-align: center;" class="page-header">{{title}}</h3>
         <table class="table table-striped table-sm">
