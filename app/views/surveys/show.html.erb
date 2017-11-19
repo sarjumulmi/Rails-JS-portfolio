@@ -1,5 +1,5 @@
 <%= title "#{@survey.title.titleize} page" %>
-<div class="show-body container">
+<div class="container" id="show-body">
 
     <!-- <div class="back-to-survey">
       <%= button_publish(@survey)%>
@@ -69,10 +69,10 @@
     {{/each}}
   </ul>
   {{#if previousSurvey}}
-    <a href="/users/1/surveys/2" id="prev">Previous</a>
+    <a href="/users/{{creator_id}}/surveys/{{previousSurvey}}" class="pagination">Previous</a>
   {{/if}}
   {{#if nextSurvey}}
-    <a href="/users/1/surveys/4" id="next">Next</a>
+    <a href="/users/{{creator_id}}/surveys/{{nextSurvey}}" class="pagination">Next</a>
   {{/if}}
 
 </script>

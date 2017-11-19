@@ -30,16 +30,17 @@ class SurveyShow {
   }
 }
 
-$(function (){
-  SurveyShow.template = Handlebars.compile($('#survey-show-template').html())
-})
 
 $(document).on('turbolinks:load', function(){
-  $('a.pagination').on('click', function(evt){
+  $('#show-body').on('click','a.pagination', function(evt){
     // console.log(`link clicked: ${this.href}`)
     $.getJSON(this.href)
     .done(json => {
-      console.log(`Survey title: ${json.questions[0].answer_choices[0].answer_text}`)
+      var survey = new SurveyShow(json)
+      var survey_show = Handlebars.compile($('#survey-show-template').html())(survey)
+      // console.log(survey_show)
+      $('#show-body').empty().html(survey_show)
+      history.pushState(null, null, this.href)
     })
     evt.preventDefault()
   })
