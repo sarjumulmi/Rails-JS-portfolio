@@ -46,7 +46,7 @@ class SurveysController < ApplicationController
 
   def update
     if @survey.update_attributes(survey_params)
-      redirect_to survey_path(@survey)
+      redirect_to user_survey_path(current_user, @survey)
     else
       render @survey, :notice => "Update Unsuccessful."
     end
