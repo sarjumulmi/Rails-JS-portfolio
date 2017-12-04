@@ -5,8 +5,8 @@
       <%= button_publish(@survey)%>
     </div>
 
-    <%= semantic_form_for @survey, :html=>{:class=> "form-group"} do |f| %>
-      <%= render 'new_survey_form', f:f %>
-    <% end %>
+    <div class="new-form">
+      <%= render 'new_survey_form' %>
+    </div>
   </div>
 </div>

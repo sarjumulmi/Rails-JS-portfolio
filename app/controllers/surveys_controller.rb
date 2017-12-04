@@ -19,6 +19,9 @@ class SurveysController < ApplicationController
     #   @question = @survey.questions.build
     #   3.times { @question.answer_choices.build}
     # end
+
+    render 'new.js', :layout => false
+
   end
 
   def create

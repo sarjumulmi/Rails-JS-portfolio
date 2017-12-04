@@ -1,6 +1,6 @@
 <%= title "Survey List" %>
 <div class="container">
-  <ul>
+  <ul id="surveys">
     <% @surveys.each do |survey| %>
       <li class="survey-list">
         <div class="panel panel-default">
@@ -21,4 +21,7 @@
     <% end %>
   </ul>
   <%= button_create_survey(@survey) %>
+  <div class="new-form">
+
+  </div>
 </div>

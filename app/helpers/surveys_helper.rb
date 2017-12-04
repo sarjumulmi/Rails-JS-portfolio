@@ -26,7 +26,7 @@ module SurveysHelper
 
   def button_create_survey(survey)
     if user_signed_in?
-      link_to("Add New Survey", new_survey_path(@survey), :class => "btn btn-primary btn-lg")
+      link_to("Add New Survey", new_survey_path(@survey), :class => "btn btn-primary btn-lg", :id =>"new-survey", :remote => true)
     end
   end
 
