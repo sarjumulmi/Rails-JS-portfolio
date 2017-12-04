@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="page-header"><%= current_user.email %>'s  Profile</h1>
-  <%= link_to "My Survey List", user_surveys_path(@user), :id => "show-survey", :class => 'btn btn-primary' %>
+  <%= link_to "My Survey List", user_surveys_path(@user), :id => "show-surveys", :class => 'btn btn-primary' %>
   <%= link_to "My Survey Details", user_survey_path(@user, 1), :class => 'btn btn-primary' %>
   <div id="user-created-surveys">
 
@@ -24,7 +24,7 @@
             <th scope="col">Created</th>
           </thead>
           <tbody>
-            {{#each survey}}
+            {{#each surveys}}
               <tr>
                 <th scope="row">{{inc @index}}</th>
                 <td>{{title}}</td>

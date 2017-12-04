@@ -1,3 +1,4 @@
+// camelCase var and functions
 function Survey(attributes){
   this.id = attributes.id
   this.description = attributes.description
@@ -6,40 +7,33 @@ function Survey(attributes){
   this.created = attributes.created
 }
 
+Survey.render = function(element, title, surveys) {
+  var surveyTemplate = Survey.template({
+    title: title,
+    surveys: surveys.map(attributes => new Survey(attributes))
+  })
+  element.empty().html(surveyTemplate)
+}
 
 $(document).on('turbolinks:load', function (){
   Handlebars.registerHelper("inc", function(value, options){
     return parseInt(value) + 1;
   });
-  // debugger;
+
   if ($('#survey-partial-template').html()) {
     Handlebars.registerPartial('survey-partial', $('#survey-partial-template').html())
     Survey.template = Handlebars.compile($('#user-surveys-template').html())
-  }  
+  }
 
-  $('#show-survey').on('click', function(evt){
-    // console.log('ciked')
+  $('#show-surveys').on('click', function(evt){
     $.get(this.href)
-    .done(json => {
-      var created_surveys = []
-      var participated_surveys = []
-
-      json.created_surveys.forEach(att => {
-        created_surveys.push(new Survey(att))
+      .done(json => {
+        Survey.render($('#user-created-surveys'), 'Created Surveys', json.created_surveys)
+        Survey.render($('#user-participated-surveys'), 'Participated Surveys', json.participated_surveys)
       })
-      var created_surveys_list = Survey.template({title: "Created Surveys", survey: created_surveys})
-      $('#user-created-surveys').empty().html(created_surveys_list)
-
-      json.participated_surveys.forEach(att => {
-        participated_surveys.push(new Survey(att))
+      .error(err => {
+        console.log(err)
       })
-      var participated_surveys_list = Survey.template({title: "Participated Surveys", survey: participated_surveys})
-      $('#user-participated-surveys').empty().html(participated_surveys_list)
-      $(this).hide()
-    })
-    .error(err => {
-      console.log(err)
-    })
     evt.preventDefault()
   })
 })
