@@ -18,6 +18,12 @@ $(document).on('turbolinks:load', function(){
   if ($('#survey-li-template').html()) {
     Survey.templateLi = Handlebars.compile($('#survey-li-template').html())
   }
+  Handlebars.registerHelper('and', function(v1, v2){
+    return v1 && v2
+  })
+  Handlebars.registerHelper('eq', function(v1, v2){
+    return v1 == v2
+  })
 })
 
 $(document).on('turbolinks:load', function(){
