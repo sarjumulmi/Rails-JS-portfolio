@@ -25,7 +25,9 @@ class SurveyShow {
 }
 
 $(document).on('turbolinks:load', function (){
-  SurveyShow.template = Handlebars.compile($('#survey-show-template').html())
+  if ($('#survey-show-template').html()) {
+    SurveyShow.template = Handlebars.compile($('#survey-show-template').html())
+  }
 })
 
 SurveyShow.render = function(element, json, href) {
