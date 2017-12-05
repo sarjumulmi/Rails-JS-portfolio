@@ -22,8 +22,7 @@ $(document).on('turbolinks:load', function(){
       url: this.action,
       data: $(this).serialize()
     }).done((resp)=>{
-      console.log(resp)
-      debugger
+      Survey.renderLi($('ul#surveys'), resp)
     })
   })
 })
