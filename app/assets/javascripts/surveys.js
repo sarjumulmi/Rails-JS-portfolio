@@ -14,5 +14,16 @@ $(document).on('turbolinks:load', function(){
     $(this).parent().prev('.fields').append($(this).data('fields').replace(regexp, time))
     evt.preventDefault()
   })
+  // event listener for new survey form submission from survey#index page
+  $('div.new-form').on('submit', 'form.new-survey', function(evt){
+    evt.preventDefault()
+    $.ajax({
+      type: 'post',
+      url: this.action,
+      data: $(this).serialize()
+    }).done((resp)=>{
+      console.log(resp)
+      debugger
+    })
+  })
 })
-// event listener for new survey form submission from survey#index page

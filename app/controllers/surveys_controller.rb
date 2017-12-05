@@ -28,7 +28,8 @@ class SurveysController < ApplicationController
     @survey = Survey.new(survey_params)
     @survey.creator = current_user
     if @survey.save
-      redirect_to edit_survey_path(@survey)
+      render :json => @survey, :serializer => UserSurveySerializer
+      # redirect_to edit_survey_path(@survey)
     else
       render 'new', :notice => "Save Unsuccessful"
     end
@@ -44,7 +45,6 @@ class SurveysController < ApplicationController
       f.html
       f.json {render :json=> @survey}
     end
-    # binding.pry
   end
 
   def update
