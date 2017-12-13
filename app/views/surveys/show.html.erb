@@ -4,7 +4,11 @@
     <!-- <div class="publish">
       <%= button_publish(@survey)%>
     </div> -->
-
+  <div class="show-pagination clearfix">
+    <%= link_to("Prev", user_survey_path(params[:user_id], @survey.previous), :class=> "pagination") if @survey.previous %>
+    <% if @survey.next && @survey.previous %> <span class="pagination"> &nbsp;|&nbsp; </span> <% end %>
+    <%= link_to("Next ", user_survey_path(params[:user_id], @survey.next), :class=> "pagination") if @survey.next %>
+  </div>
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= @survey.title %>
@@ -38,17 +42,27 @@
 
   <div class="show-pagination">
     <%= link_to("Prev", user_survey_path(params[:user_id], @survey.previous), :class=> "pagination") if @survey.previous %>
-    <% if @survey.next && @survey.previous %> <span> | </span> <% end %>
-    <%= link_to("Next", user_survey_path(params[:user_id], @survey.next), :class=> "pagination") if @survey.next %>
-
+    <% if @survey.next && @survey.previous %> <span class="pagination"> &nbsp;|&nbsp; </span> <% end %>
+    <%= link_to("Next ", user_survey_path(params[:user_id], @survey.next), :class=> "pagination") if @survey.next %>
   </div>
-
 
 </div>
 
 <!-- handlebar template -->
 <script type="text/x-handlebars-template" id="survey-show-template">
-
+  <div class="show-pagination clearfix">
+    {{#if previousSurvey}}
+      <a href="/users/{{creator_id}}/surveys/{{previousSurvey}}" class="pagination">Prev</a>
+    {{/if}}
+    {{#if nextSurvey}}
+      {{#if previousSurvey}}
+        <span class="pagination">&nbsp; | &nbsp;</span>
+      {{/if}}
+    {{/if}}
+    {{#if nextSurvey}}
+      <a href="/users/{{creator_id}}/surveys/{{nextSurvey}}" class="pagination"> Next</a>
+    {{/if}}
+  </div>
   <div class="panel panel-default">
     <div class="panel-heading">
       {{title}}
@@ -80,13 +94,12 @@
     {{/if}}
     {{#if nextSurvey}}
       {{#if previousSurvey}}
-        <span> | </span>
+        <span class="pagination"> &nbsp;|&nbsp; </span>
       {{/if}}
     {{/if}}
     {{#if nextSurvey}}
       <a href="/users/{{creator_id}}/surveys/{{nextSurvey}}" class="pagination"> Next</a>
     {{/if}}
-
   </div>
 
 </script>
