@@ -17,7 +17,7 @@ You will need the following software:
 Run ```bundle install``` and ```rake db:migrate``` after cloning the github repo.
 
 ```
-$ git clone https://github.com/snsavage/carb_tracker.git
+$ git clone https://github.com/sarjumulmi/Rails-JS-portfolio.git
 $ bundle install
 $ rake db:migrate
 $ rake db:migrate RAILS_ENV=test
