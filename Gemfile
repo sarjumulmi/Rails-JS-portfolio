@@ -7,13 +7,13 @@ gem 'rails', '4.2.6'
 
 gem "sprockets", "~> 4.x"
 gem "babel-schmooze-sprockets"
-
+gem 'pg'
 group :development, :test do
   gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg'
+
   gem 'rails_12factor'
 end
 # Use SCSS for stylesheets
