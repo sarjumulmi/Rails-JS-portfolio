@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function(){
       type: 'post',
       url: this.action,
       data: $(this).serialize()
-    }).done((resp)=>{
+    }).done(function(resp) {
       Survey.renderLi($('ul#surveys'), resp)
     })
   })
