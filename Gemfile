@@ -8,6 +8,12 @@ gem 'rails', '4.2.6'
 gem "sprockets", "~> 4.x"
 gem "babel-schmooze-sprockets"
 gem 'pg'
+<<<<<<< HEAD
+=======
+group :development, :test do
+  gem 'sqlite3'
+end
+>>>>>>> bb106355ade7285ee67293bf1e9bc55a3187e247
 
 group :production do
 
