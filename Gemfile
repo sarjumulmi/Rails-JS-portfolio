@@ -7,7 +7,7 @@ gem 'rails', '4.2.6'
 
 gem "sprockets", "~> 4.x"
 gem "babel-schmooze-sprockets"
-gem 'pg'
+gem 'pg', "~>0.21"
 
 group :production do
 
